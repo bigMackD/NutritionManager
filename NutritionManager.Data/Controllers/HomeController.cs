@@ -1,18 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using NutritionManager.Data.Models;
+using NutritionManager.Data.Repositories;
+using NutritionManager.Data.Repositories.Meals;
+using NutritionManager.Data.Repositories.Products;
 
 namespace NutritionManager.Data.Controllers
 {
     public class HomeController : Controller
     {
+        private IUsersRepository _users;
+        public HomeController(IUsersRepository users)
+        {
+            _users = users;
+        }
         public IActionResult Index()
         {
-            //wstrzyknac context i await context.Database.EnsureCreatedAsync();
+            var user = _users.GetUsers();
             return View();
         }
 

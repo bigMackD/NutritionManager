@@ -7,11 +7,8 @@ namespace NutritionManager.Data.Entities
     {
         [Key]
         public long Id { get; set; }
-
-        [Required]
-        public string FirstName { get; set; }
-        [Required]
-        public string LastName { get; set; }
+        public string IdentityId { get; set; }
+        public AppUser Identity { get; set; }
 
         [Required]
         public int Weight { get; set; }

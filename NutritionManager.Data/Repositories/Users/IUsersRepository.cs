@@ -1,11 +1,12 @@
-﻿using NutritionManager.Data.Models.User;
+﻿using NutritionManager.Data.Entities;
+using NutritionManager.Data.Models.User;
 using System.Collections.Generic;
 
 namespace NutritionManager.Data.Repositories
 {
     public interface IUsersRepository
     {
-        IList<UserModel> GetUsers();
+        IList<User> GetUsers();
         UserModel GetUser(int id);
 
         void Add(AddUserModel user);

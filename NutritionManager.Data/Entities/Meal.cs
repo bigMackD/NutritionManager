@@ -10,7 +10,7 @@ namespace NutritionManager.Data.Entities
         [Required]
         public string Name { get; set; }
 
-        IList<Product> Products { get; set; }
+        public IList<Product> Products { get; set; }
        
     }
 }
