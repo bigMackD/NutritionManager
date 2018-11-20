@@ -1,11 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using NutritionManager.Data.Models.Meal;
+using NutritionManager.Data.Services;
 
 namespace NutritionManager.Data.Repositories.Meals
 {
-    public class InMemoryMealsRepository : IMealsRepository
+    public class SqlMealsRepository : IMealsRepository
     {
+        private ApplicationDbContext _context;
+        public SqlMealsRepository(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
         public void Add(AddMealModel user)
         {
             throw new NotImplementedException();

@@ -12,6 +12,7 @@ namespace NutritionManager.Data.Controllers
     {
         public IActionResult Index()
         {
+            //wstrzyknac context i await context.Database.EnsureCreatedAsync();
             return View();
         }
 
