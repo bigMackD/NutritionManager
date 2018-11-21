@@ -6,7 +6,7 @@ namespace NutritionManager.Data.Models.User
     {
         [Key]
         public long Id { get; set; }
-      
+
         [Required]
         public int? Weight { get; set; }
         [Required]
