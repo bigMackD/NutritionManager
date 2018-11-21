@@ -1,6 +1,8 @@
 ﻿using NutritionManager.Data.Entities;
+using NutritionManager.Data.Models.Meal;
 using NutritionManager.Data.Models.User;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NutritionManager.Data.Repositories
 {
@@ -60,27 +62,86 @@ namespace NutritionManager.Data.Repositories
             }
         };
 
-        public void Add(AddUserModel user)
+        public UserModel AddAppUser(AppUser identity)
         {
+            _users.Add(new User
+            {
+                Identity = identity,
+                IdentityId = identity.Id,
+                Height = null,
+                Weight = null,
+                MealsConsumed = null,
+                RequiedCalories = null
+            });
+            return new UserModel()
+            {
+                Identity = identity,
+                IdentityId = identity.Id,
+                ConsumedCalories = null,
+                Height = null,
+                Weight = null,
+                MealsConsumed = null,
+                RequiedCalories = null
+            };
+        }
+
+        public void AddUserDetails(long id, UserModel detailedUserModel)
+        {
+            var user = GetUser(id);
             throw new System.NotImplementedException();
         }
 
         public void Delete(long id)
         {
-            throw new System.NotImplementedException();
+            var expenseToBeRemoved = _users.SingleOrDefault(x => x.Id == id);
+            _users.Remove(expenseToBeRemoved);
         }
 
-        public UserModel GetUser(int id)
+        public UserModel GetUser(long id)
         {
-            throw new System.NotImplementedException();
+            var user = _users.SingleOrDefault(x => x.Id == id);
+
+            return new UserModel()
+            {
+                Id = user.Id,
+                IdentityId = user.IdentityId,
+                Identity = user.Identity,
+                Weight = user.Weight,
+                Height = user.Height,
+                RequiedCalories = user.RequiedCalories,
+                ConsumedCalories = user.ConsumedCalories,
+                MealsConsumed = user.MealsConsumed
+            };
         }
 
-        public IList<User> GetUsers()
+        public IList<UserModel> GetUsers()
         {
-            return _users;
+            return _users.Select(user => new UserModel
+            {
+                Id = user.Id,
+                IdentityId = user.IdentityId,
+                Identity = user.Identity,
+                Height = user.Height,
+                Weight = user.Weight,
+                RequiedCalories = user.RequiedCalories,
+                MealsConsumed = user.MealsConsumed,
+                ConsumedCalories = user.ConsumedCalories
+            }).ToList();
+           
         }
 
-        public void Update(EditUserModel user)
+        public void LogMeal(MealModel mealToBeLogged, long id)
+        {
+            var user = _users.FirstOrDefault(x => x.Id == id);
+            user.MealsConsumed.Add(new Meal
+            {
+                Id = mealToBeLogged.Id,
+                Name = mealToBeLogged.Name,
+                Products = mealToBeLogged.Products
+            });
+        }
+
+        public void Update(EditUserModel user, long id)
         {
             throw new System.NotImplementedException();
         }

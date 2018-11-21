@@ -11,5 +11,6 @@ namespace NutritionManager.Data.Repositories.Meals
         void Add(AddMealModel user);
         void Delete(long id);
         void Update(EditMealModel user);
+       
     }
 }

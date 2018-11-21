@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using NutritionManager.Data.Models;
 using NutritionManager.Data.Repositories;
-using NutritionManager.Data.Repositories.Meals;
-using NutritionManager.Data.Repositories.Products;
 
 namespace NutritionManager.Data.Controllers
 {
@@ -16,7 +14,7 @@ namespace NutritionManager.Data.Controllers
         }
         public IActionResult Index()
         {
-            var user = _users.GetUsers();
+            var user = _users.GetUser(1);
             return View();
         }
 
