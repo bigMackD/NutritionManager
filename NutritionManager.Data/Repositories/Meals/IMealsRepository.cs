@@ -6,7 +6,7 @@ namespace NutritionManager.Data.Repositories.Meals
     public interface IMealsRepository
     {
         IList<MealModel> GetMeals();
-        MealModel GetMeal(int id);
+        MealModel GetMeal(long id);
    
         void Add(AddMealModel user);
         void Delete(long id);

@@ -23,7 +23,7 @@ namespace NutritionManager.Data.Repositories.Meals
             throw new NotImplementedException();
         }
 
-        public MealModel GetMeal(int id)
+        public MealModel GetMeal(long id)
         {
             throw new NotImplementedException();
         }
