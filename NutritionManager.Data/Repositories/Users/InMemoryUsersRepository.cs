@@ -85,16 +85,10 @@ namespace NutritionManager.Data.Repositories
             };
         }
 
-        public void AddUserDetails(long id, UserModel detailedUserModel)
-        {
-            var user = GetUser(id);
-            throw new System.NotImplementedException();
-        }
-
         public void Delete(long id)
         {
-            var expenseToBeRemoved = _users.SingleOrDefault(x => x.Id == id);
-            _users.Remove(expenseToBeRemoved);
+            var userToBeRemoved = _users.SingleOrDefault(x => x.Id == id);
+            _users.Remove(userToBeRemoved);
         }
 
         public UserModel GetUser(long id)
@@ -141,9 +135,14 @@ namespace NutritionManager.Data.Repositories
             });
         }
 
-        public void Update(EditUserModel user, long id)
+        public void UpdateUserDetails(EditUserModel user, long id)
         {
-            throw new System.NotImplementedException();
+            var userToBeUpdated = GetUser(id);
+
+            userToBeUpdated.Id = user.Id;
+            userToBeUpdated.Weight = user.Weight;
+            userToBeUpdated.Height = user.Height;
+            userToBeUpdated.RequiedCalories = user.RequiedCalories;
         }
     }
 }

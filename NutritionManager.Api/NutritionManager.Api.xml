@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NutritionManager.Api</name>
+    </assembly>
+    <members>
+        <member name="M:NutritionManager.Api.Controllers.DashboardController.Get">
+            <summary>
+            Returns all users of app
+            </summary>
+            <returns>User</returns>
+        </member>
+    </members>
+</doc>
