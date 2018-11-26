@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NutritionManager.Data.Models.User;
 using NutritionManager.Data.Repositories;
@@ -8,14 +7,15 @@ using NutritionManager.Data.Repositories;
 
 namespace NutritionManager.Api.Controllers
 {
+
     [Route("api/[controller]")]
     public class DashboardController : Controller
     {
-        private readonly IUsersRepository _users;
+        private readonly IUsersRepository _usersRepository;
 
         public DashboardController(IUsersRepository users)
         {
-            _users = users;
+            _usersRepository = users;
         }
 
         // GET: api/<controller>
@@ -25,7 +25,7 @@ namespace NutritionManager.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var users = _users.GetUsers();
+            var users = _usersRepository.GetUsers();
             return new OkObjectResult(users);
 
         }
@@ -35,9 +35,10 @@ namespace NutritionManager.Api.Controllers
         /// Returns one user with given ID
         /// </summary>
         [HttpGet("{id}")]
-        public string Get(long id)
+        public async Task<IActionResult> Get(long id)
         {
-            return "value";
+            var user = _usersRepository.GetUser(id);
+            return new OkObjectResult(user);
         }
 
         // PUT api/<controller>/5
@@ -47,7 +48,7 @@ namespace NutritionManager.Api.Controllers
         [HttpPut("{id}")]
         public void UpdateDetails([FromRoute]long id, [FromBody]EditUserModel user)
         {
-            _users.UpdateUserDetails(user, id);
+            _usersRepository.UpdateUserDetails(user, id);
         }
 
         // DELETE api/<controller>/5
@@ -57,7 +58,7 @@ namespace NutritionManager.Api.Controllers
         [HttpDelete("{id}")]
         public void Delete(long id)
         {
-            _users.Delete(id);
+            _usersRepository.Delete(id);
         }
     }
 }

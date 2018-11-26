@@ -67,7 +67,6 @@ namespace NutritionManager.Data.Repositories
             _users.Add(new User
             {
                 Identity = identity,
-                IdentityId = identity.Id,
                 Height = null,
                 Weight = null,
                 MealsConsumed = null,
@@ -76,7 +75,6 @@ namespace NutritionManager.Data.Repositories
             return new UserModel()
             {
                 Identity = identity,
-                IdentityId = identity.Id,
                 ConsumedCalories = null,
                 Height = null,
                 Weight = null,
@@ -98,7 +96,6 @@ namespace NutritionManager.Data.Repositories
             return new UserModel()
             {
                 Id = user.Id,
-                IdentityId = user.IdentityId,
                 Identity = user.Identity,
                 Weight = user.Weight,
                 Height = user.Height,
@@ -113,7 +110,6 @@ namespace NutritionManager.Data.Repositories
             return _users.Select(user => new UserModel
             {
                 Id = user.Id,
-                IdentityId = user.IdentityId,
                 Identity = user.Identity,
                 Height = user.Height,
                 Weight = user.Weight,
@@ -139,7 +135,6 @@ namespace NutritionManager.Data.Repositories
         {
             var userToBeUpdated = GetUser(id);
 
-            userToBeUpdated.Id = user.Id;
             userToBeUpdated.Weight = user.Weight;
             userToBeUpdated.Height = user.Height;
             userToBeUpdated.RequiedCalories = user.RequiedCalories;

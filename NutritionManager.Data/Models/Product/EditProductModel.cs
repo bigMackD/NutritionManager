@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace NutritionManager.Data.Models.Product
+﻿namespace NutritionManager.Data.Models.Product
 {
     public class EditProductModel
     {

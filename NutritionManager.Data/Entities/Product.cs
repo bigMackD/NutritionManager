@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace NutritionManager.Data.Entities
 {
@@ -10,7 +9,6 @@ namespace NutritionManager.Data.Entities
         [Required]
         public string Name { get; set; }
 
-        public IList<Meal> Meals { get; set; }
         [Required]
         public NutritionValues NutritionValue{get;set;}
 

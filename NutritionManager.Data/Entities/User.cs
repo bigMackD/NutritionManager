@@ -9,13 +9,15 @@ namespace NutritionManager.Data.Entities
     {
         [Key]
         public long Id { get; set; }
-        public string IdentityId { get; set; }
-        public AppUser Identity { get; set; }
+       
 
         [Required]
         public int? Weight { get; set; }
         [Required]
         public int? Height { get; set; }
+
+        public AppUser Identity { get; set; }
+        
 
         [Required]
         public int? RequiedCalories { get; set; }
